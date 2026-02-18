@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3b6dd6f871f4ac1444bc2cf50ceadff4 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-textpath@1.2.3/leaflet.textpath.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3b6dd6f871f4ac1444bc2cf50ceadff4" ></div>
+        
+    
+<!doctype html>
+<html lang="en">
+<head>
+  <style>
+    #maplegend {
+      position: absolute; z-index:9999; border: 1px solid #ccc;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 6px; padding: 10px; font-size: 14px;
+      right: 20px; top: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      font-family: Arial, sans-serif;
+    }
+    .legend-item { margin-bottom: 5px; font-size: 13px; display: flex; align-items: center;}
+    .color-box { width: 25px; height: 4px; margin-right: 8px; display: inline-block;}
+    .dot-box { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #ccc; background: white; margin-right: 8px; display: inline-block; text-align: center; font-size: 8px; line-height: 10px;}
+    .circle-red { width: 10px; height: 10px; border-radius: 50%; background: #e74c3c; border: 1px solid #c0392b; margin-right: 10px; display: inline-block;}
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div id='maplegend'>
+    <div style='font-weight: bold; margin-bottom: 5px; border-bottom: 1px solid #eee;'>Transportation</div>
+    <div class='legend-item'><span class='color-box' style='background:#e74c3c;'></span> Ride-Hailing</div>
+    <div class='legend-item'><span class='color-box' style='background:#3498db;'></span> Public Bus</div>
+    
+    <div style='font-weight: bold; margin-top: 10px; margin-bottom: 5px; border-bottom: 1px solid #eee;'>Locations</div>
+    <div class='legend-item'><div class="dot-box" style="border-color: #3498db;">1</div> Visited (Sequence)</div>
+    <div class='legend-item'><span class="circle-red"></span> Not Visited</div>
+    <div class='legend-item'><i class="fa fa-flag" style="color:green; margin-right:8px; width:14px; text-align:center;"></i> Finish Line</div>
+  </div>
+</body>
+</html>
+</body>
+<script>
+    
+    
+            var map_3b6dd6f871f4ac1444bc2cf50ceadff4 = L.map(
+                "map_3b6dd6f871f4ac1444bc2cf50ceadff4",
+                {
+                    center: [-7.55701440832599, 110.82137900723],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_9361069275c934bba8fe66bb219d8d4b = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_9361069275c934bba8fe66bb219d8d4b.addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var circle_marker_5b67cc80f8f84aef6c2810b0888167cd = L.circleMarker(
+                [-7.55770585509504, 110.795763836585],
+                {"bubblingMouseEvents": true, "color": "#c0392b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+        var popup_f6efd1af4b6c96f0b1a8f6fa23b63b6d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5905f3fc9f14a34e41a038cd17afa2ad = $(`<div id="html_5905f3fc9f14a34e41a038cd17afa2ad" style="width: 100.0%; height: 100.0%;">Not Visited: Lokananta</div>`)[0];
+                popup_f6efd1af4b6c96f0b1a8f6fa23b63b6d.setContent(html_5905f3fc9f14a34e41a038cd17afa2ad);
+            
+        
+
+        circle_marker_5b67cc80f8f84aef6c2810b0888167cd.bindPopup(popup_f6efd1af4b6c96f0b1a8f6fa23b63b6d)
+        ;
+
+        
+    
+    
+            circle_marker_5b67cc80f8f84aef6c2810b0888167cd.bindTooltip(
+                `<div>
+                     Not Visited: Lokananta
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_cbe01f9cffb1d5ab9c6ce6811af8ba6d = L.marker(
+                [-7.55770585509504, 110.795763836585],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_b3c56b28eb9cb193a6c2c9627c337ce5 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    font-size: 8pt; font-weight: bold; color: #333; text-align: center;\n                    text-shadow: 1px 1px 0px white; background-color: rgba(255,255,255,0.5);\n                    padding: 0 4px; border-radius: 4px; display: inline-block;\n                \"\u003e\n                    Lokananta\n                \u003c/div\u003e\n            ",
+  "iconSize": [150, 20],
+  "iconAnchor": [20, -10],
+  "className": "empty",
+});
+        
+    
+                marker_cbe01f9cffb1d5ab9c6ce6811af8ba6d.setIcon(div_icon_b3c56b28eb9cb193a6c2c9627c337ce5);
+            
+    
+            var poly_line_fa48c1ad27512214ddfdbdb2b653380b = L.polyline(
+                [[-7.55701440832599, 110.82137900723], [-7.56901967536997, 110.810963161402]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#e74c3c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            poly_line_fa48c1ad27512214ddfdbdb2b653380b.bindTooltip(
+                `<div>
+                     Ride-Hailing: Stasiun Solo Balapan (Depart) -> Museum Keris Nusantara
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            poly_line_fa48c1ad27512214ddfdbdb2b653380b.setText(
+                "      \u27a4",
+                {
+  "repeat": true,
+  "center": false,
+  "below": false,
+  "offset": 7,
+  "orientation": 0,
+  "attributes": {
+  "fill": "#e74c3c",
+  "font-weight": "bold",
+  "font-size": "18",
+},
+}
+            );
+        
+    
+            var marker_4abc9c95615bc3be06a8d2678bffabd3 = L.marker(
+                [-7.55701440832599, 110.82137900723],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_d5326b5734c5b89932df40450e9b50cd = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background-color: white;\n                    border: 3px solid #e74c3c;\n                    color: black;\n                    width: 24px; height: 24px;\n                    border-radius: 50%;\n                    text-align: center;\n                    line-height: 20px;\n                    font-weight: bold;\n                    font-size: 10pt;\n                    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n                \"\u003e\n                    1\n                \u003c/div\u003e\n            ",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+            marker_4abc9c95615bc3be06a8d2678bffabd3.bindTooltip(
+                `<div>
+                     <b>Stop 1:</b> Stasiun Solo Balapan (Depart)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4abc9c95615bc3be06a8d2678bffabd3.setIcon(div_icon_d5326b5734c5b89932df40450e9b50cd);
+            
+    
+            var marker_c36be01cb5f948b8d6efb4ef0f806fe6 = L.marker(
+                [-7.55701440832599, 110.82137900723],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_a547452df5fd196f4a6a88cd1064b383 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    font-size: 8pt; font-weight: bold; color: #333; text-align: center;\n                    text-shadow: 1px 1px 0px white; background-color: rgba(255,255,255,0.5);\n                    padding: 0 4px; border-radius: 4px; display: inline-block;\n                \"\u003e\n                    Stasiun Solo Balapan (Depart)\n                \u003c/div\u003e\n            ",
+  "iconSize": [150, 20],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_c36be01cb5f948b8d6efb4ef0f806fe6.setIcon(div_icon_a547452df5fd196f4a6a88cd1064b383);
+            
+    
+            var poly_line_cd5f1fa0431c4f5e915456ddaaf9cf71 = L.polyline(
+                [[-7.56901967536997, 110.810963161402], [-7.56698198999742, 110.809521919355]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#e74c3c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            poly_line_cd5f1fa0431c4f5e915456ddaaf9cf71.bindTooltip(
+                `<div>
+                     Ride-Hailing: Museum Keris Nusantara -> Loji Gandrung
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            poly_line_cd5f1fa0431c4f5e915456ddaaf9cf71.setText(
+                "      \u27a4",
+                {
+  "repeat": true,
+  "center": false,
+  "below": false,
+  "offset": 7,
+  "orientation": 0,
+  "attributes": {
+  "fill": "#e74c3c",
+  "font-weight": "bold",
+  "font-size": "18",
+},
+}
+            );
+        
+    
+            var marker_b65a721730d95970d787badecf10445e = L.marker(
+                [-7.56901967536997, 110.810963161402],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_d040045cf92072c8e1ea89153e8891c5 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background-color: white;\n                    border: 3px solid #e74c3c;\n                    color: black;\n                    width: 24px; height: 24px;\n                    border-radius: 50%;\n                    text-align: center;\n                    line-height: 20px;\n                    font-weight: bold;\n                    font-size: 10pt;\n                    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n                \"\u003e\n                    2\n                \u003c/div\u003e\n            ",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+            marker_b65a721730d95970d787badecf10445e.bindTooltip(
+                `<div>
+                     <b>Stop 2:</b> Museum Keris Nusantara
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b65a721730d95970d787badecf10445e.setIcon(div_icon_d040045cf92072c8e1ea89153e8891c5);
+            
+    
+            var marker_665bf44a582506d3e88334f91102c158 = L.marker(
+                [-7.56901967536997, 110.810963161402],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_fedb6f293744567d1ad9029d0b8269ac = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    font-size: 8pt; font-weight: bold; color: #333; text-align: center;\n                    text-shadow: 1px 1px 0px white; background-color: rgba(255,255,255,0.5);\n                    padding: 0 4px; border-radius: 4px; display: inline-block;\n                \"\u003e\n                    Museum Keris Nusantara\n                \u003c/div\u003e\n            ",
+  "iconSize": [150, 20],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_665bf44a582506d3e88334f91102c158.setIcon(div_icon_fedb6f293744567d1ad9029d0b8269ac);
+            
+    
+            var poly_line_3fc084a9fd99f11dbea3350cbaaa1637 = L.polyline(
+                [[-7.56698198999742, 110.809521919355], [-7.5667624571689, 110.823073644107]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#e74c3c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            poly_line_3fc084a9fd99f11dbea3350cbaaa1637.bindTooltip(
+                `<div>
+                     Ride-Hailing: Loji Gandrung -> Pura Mangkunegaran
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            poly_line_3fc084a9fd99f11dbea3350cbaaa1637.setText(
+                "      \u27a4",
+                {
+  "repeat": true,
+  "center": false,
+  "below": false,
+  "offset": 7,
+  "orientation": 0,
+  "attributes": {
+  "fill": "#e74c3c",
+  "font-weight": "bold",
+  "font-size": "18",
+},
+}
+            );
+        
+    
+            var marker_a19535ca8b6a7b4ce341a750bc5a7f1a = L.marker(
+                [-7.56698198999742, 110.809521919355],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_b2c7f5aa7c776f64b845b1f360a6c49a = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background-color: white;\n                    border: 3px solid #e74c3c;\n                    color: black;\n                    width: 24px; height: 24px;\n                    border-radius: 50%;\n                    text-align: center;\n                    line-height: 20px;\n                    font-weight: bold;\n                    font-size: 10pt;\n                    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n                \"\u003e\n                    3\n                \u003c/div\u003e\n            ",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+            marker_a19535ca8b6a7b4ce341a750bc5a7f1a.bindTooltip(
+                `<div>
+                     <b>Stop 3:</b> Loji Gandrung
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a19535ca8b6a7b4ce341a750bc5a7f1a.setIcon(div_icon_b2c7f5aa7c776f64b845b1f360a6c49a);
+            
+    
+            var marker_8749d3877d5aa6400317e3d0cc30ad6e = L.marker(
+                [-7.56698198999742, 110.809521919355],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_6c62258e8928e1fd5cfd7a1d15ce87ab = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    font-size: 8pt; font-weight: bold; color: #333; text-align: center;\n                    text-shadow: 1px 1px 0px white; background-color: rgba(255,255,255,0.5);\n                    padding: 0 4px; border-radius: 4px; display: inline-block;\n                \"\u003e\n                    Loji Gandrung\n                \u003c/div\u003e\n            ",
+  "iconSize": [150, 20],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_8749d3877d5aa6400317e3d0cc30ad6e.setIcon(div_icon_6c62258e8928e1fd5cfd7a1d15ce87ab);
+            
+    
+            var poly_line_879ff65577c3760d3c10cfb560799150 = L.polyline(
+                [[-7.5667624571689, 110.823073644107], [-7.57338529975205, 110.826306455501]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#e74c3c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            poly_line_879ff65577c3760d3c10cfb560799150.bindTooltip(
+                `<div>
+                     Ride-Hailing: Pura Mangkunegaran -> Kampung Batik Kauman
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            poly_line_879ff65577c3760d3c10cfb560799150.setText(
+                "      \u27a4",
+                {
+  "repeat": true,
+  "center": false,
+  "below": false,
+  "offset": 7,
+  "orientation": 0,
+  "attributes": {
+  "fill": "#e74c3c",
+  "font-weight": "bold",
+  "font-size": "18",
+},
+}
+            );
+        
+    
+            var marker_c9d2244c804f5102734466bb6e17283f = L.marker(
+                [-7.5667624571689, 110.823073644107],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_44bfbe8af25ac4f9165f6f555afbd283 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background-color: white;\n                    border: 3px solid #e74c3c;\n                    color: black;\n                    width: 24px; height: 24px;\n                    border-radius: 50%;\n                    text-align: center;\n                    line-height: 20px;\n                    font-weight: bold;\n                    font-size: 10pt;\n                    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n                \"\u003e\n                    4\n                \u003c/div\u003e\n            ",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+            marker_c9d2244c804f5102734466bb6e17283f.bindTooltip(
+                `<div>
+                     <b>Stop 4:</b> Pura Mangkunegaran
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c9d2244c804f5102734466bb6e17283f.setIcon(div_icon_44bfbe8af25ac4f9165f6f555afbd283);
+            
+    
+            var marker_7c872c4eecefd67a8222c3801009ee94 = L.marker(
+                [-7.5667624571689, 110.823073644107],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_94834621644d9d42f80686c7476f5830 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    font-size: 8pt; font-weight: bold; color: #333; text-align: center;\n                    text-shadow: 1px 1px 0px white; background-color: rgba(255,255,255,0.5);\n                    padding: 0 4px; border-radius: 4px; display: inline-block;\n                \"\u003e\n                    Pura Mangkunegaran\n                \u003c/div\u003e\n            ",
+  "iconSize": [150, 20],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_7c872c4eecefd67a8222c3801009ee94.setIcon(div_icon_94834621644d9d42f80686c7476f5830);
+            
+    
+            var poly_line_af5eb87e5471799265f9ed0b147b7808 = L.polyline(
+                [[-7.57338529975205, 110.826306455501], [-7.56465685619763, 110.858597603008]],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3498db", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            poly_line_af5eb87e5471799265f9ed0b147b7808.bindTooltip(
+                `<div>
+                     Public Bus: Kampung Batik Kauman -> Taman Safari Solo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            poly_line_af5eb87e5471799265f9ed0b147b7808.setText(
+                "      \u27a4",
+                {
+  "repeat": true,
+  "center": false,
+  "below": false,
+  "offset": 7,
+  "orientation": 0,
+  "attributes": {
+  "fill": "#3498db",
+  "font-weight": "bold",
+  "font-size": "18",
+},
+}
+            );
+        
+    
+            var marker_e45dbb110c75d57a2fbd184fe82fd40a = L.marker(
+                [-7.57338529975205, 110.826306455501],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_2d195ae6f518f3a44e414d9926dd7342 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background-color: white;\n                    border: 3px solid #3498db;\n                    color: black;\n                    width: 24px; height: 24px;\n                    border-radius: 50%;\n                    text-align: center;\n                    line-height: 20px;\n                    font-weight: bold;\n                    font-size: 10pt;\n                    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n                \"\u003e\n                    5\n                \u003c/div\u003e\n            ",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+            marker_e45dbb110c75d57a2fbd184fe82fd40a.bindTooltip(
+                `<div>
+                     <b>Stop 5:</b> Kampung Batik Kauman
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e45dbb110c75d57a2fbd184fe82fd40a.setIcon(div_icon_2d195ae6f518f3a44e414d9926dd7342);
+            
+    
+            var marker_5e13df2f35b4fa8105c585f23f3f17bb = L.marker(
+                [-7.57338529975205, 110.826306455501],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_0fdc808264d6117d125b2008041ddfb8 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    font-size: 8pt; font-weight: bold; color: #333; text-align: center;\n                    text-shadow: 1px 1px 0px white; background-color: rgba(255,255,255,0.5);\n                    padding: 0 4px; border-radius: 4px; display: inline-block;\n                \"\u003e\n                    Kampung Batik Kauman\n                \u003c/div\u003e\n            ",
+  "iconSize": [150, 20],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_5e13df2f35b4fa8105c585f23f3f17bb.setIcon(div_icon_0fdc808264d6117d125b2008041ddfb8);
+            
+    
+            var poly_line_24a5dff783d1009cc2946f070d6090de = L.polyline(
+                [[-7.56465685619763, 110.858597603008], [-7.5687534176839, 110.816341244649]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#e74c3c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            poly_line_24a5dff783d1009cc2946f070d6090de.bindTooltip(
+                `<div>
+                     Ride-Hailing: Taman Safari Solo -> Museum Batik Danar Hadi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            poly_line_24a5dff783d1009cc2946f070d6090de.setText(
+                "      \u27a4",
+                {
+  "repeat": true,
+  "center": false,
+  "below": false,
+  "offset": 7,
+  "orientation": 0,
+  "attributes": {
+  "fill": "#e74c3c",
+  "font-weight": "bold",
+  "font-size": "18",
+},
+}
+            );
+        
+    
+            var marker_0cf424da6c497c647def33e81d373ac4 = L.marker(
+                [-7.56465685619763, 110.858597603008],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_74c5bd81d3e9276d1a1792e231c6cc80 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background-color: white;\n                    border: 3px solid #e74c3c;\n                    color: black;\n                    width: 24px; height: 24px;\n                    border-radius: 50%;\n                    text-align: center;\n                    line-height: 20px;\n                    font-weight: bold;\n                    font-size: 10pt;\n                    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n                \"\u003e\n                    6\n                \u003c/div\u003e\n            ",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+            marker_0cf424da6c497c647def33e81d373ac4.bindTooltip(
+                `<div>
+                     <b>Stop 6:</b> Taman Safari Solo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0cf424da6c497c647def33e81d373ac4.setIcon(div_icon_74c5bd81d3e9276d1a1792e231c6cc80);
+            
+    
+            var marker_87811e7b2711d3666a90c1e72325c64e = L.marker(
+                [-7.56465685619763, 110.858597603008],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_fa356b1f7f9c6fe3c7e14238fd62bcc0 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    font-size: 8pt; font-weight: bold; color: #333; text-align: center;\n                    text-shadow: 1px 1px 0px white; background-color: rgba(255,255,255,0.5);\n                    padding: 0 4px; border-radius: 4px; display: inline-block;\n                \"\u003e\n                    Taman Safari Solo\n                \u003c/div\u003e\n            ",
+  "iconSize": [150, 20],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_87811e7b2711d3666a90c1e72325c64e.setIcon(div_icon_fa356b1f7f9c6fe3c7e14238fd62bcc0);
+            
+    
+            var poly_line_7409c8e3968d444d294d1cf7c6d55590 = L.polyline(
+                [[-7.5687534176839, 110.816341244649], [-7.56912225718998, 110.822598244105]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#e74c3c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            poly_line_7409c8e3968d444d294d1cf7c6d55590.bindTooltip(
+                `<div>
+                     Ride-Hailing: Museum Batik Danar Hadi -> Pasar Triwindu
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            poly_line_7409c8e3968d444d294d1cf7c6d55590.setText(
+                "      \u27a4",
+                {
+  "repeat": true,
+  "center": false,
+  "below": false,
+  "offset": 7,
+  "orientation": 0,
+  "attributes": {
+  "fill": "#e74c3c",
+  "font-weight": "bold",
+  "font-size": "18",
+},
+}
+            );
+        
+    
+            var marker_606b8506c16c04d1567c05f021b087e1 = L.marker(
+                [-7.5687534176839, 110.816341244649],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_22abfdf7b3be86d880a17ace312b1546 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background-color: white;\n                    border: 3px solid #e74c3c;\n                    color: black;\n                    width: 24px; height: 24px;\n                    border-radius: 50%;\n                    text-align: center;\n                    line-height: 20px;\n                    font-weight: bold;\n                    font-size: 10pt;\n                    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n                \"\u003e\n                    7\n                \u003c/div\u003e\n            ",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+            marker_606b8506c16c04d1567c05f021b087e1.bindTooltip(
+                `<div>
+                     <b>Stop 7:</b> Museum Batik Danar Hadi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_606b8506c16c04d1567c05f021b087e1.setIcon(div_icon_22abfdf7b3be86d880a17ace312b1546);
+            
+    
+            var marker_0113df32a145bcb015f48e70fa755c76 = L.marker(
+                [-7.5687534176839, 110.816341244649],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_95c92d028f6b0777b691395cad8bfbe1 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    font-size: 8pt; font-weight: bold; color: #333; text-align: center;\n                    text-shadow: 1px 1px 0px white; background-color: rgba(255,255,255,0.5);\n                    padding: 0 4px; border-radius: 4px; display: inline-block;\n                \"\u003e\n                    Museum Batik Danar Hadi\n                \u003c/div\u003e\n            ",
+  "iconSize": [150, 20],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_0113df32a145bcb015f48e70fa755c76.setIcon(div_icon_95c92d028f6b0777b691395cad8bfbe1);
+            
+    
+            var poly_line_aed40c10ef1b6024c22ab53607292b0a = L.polyline(
+                [[-7.56912225718998, 110.822598244105], [-7.56933407368537, 110.831616368821]],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3498db", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            poly_line_aed40c10ef1b6024c22ab53607292b0a.bindTooltip(
+                `<div>
+                     Public Bus: Pasar Triwindu -> Pasar Gedhe
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            poly_line_aed40c10ef1b6024c22ab53607292b0a.setText(
+                "      \u27a4",
+                {
+  "repeat": true,
+  "center": false,
+  "below": false,
+  "offset": 7,
+  "orientation": 0,
+  "attributes": {
+  "fill": "#3498db",
+  "font-weight": "bold",
+  "font-size": "18",
+},
+}
+            );
+        
+    
+            var marker_f5ff605aabe9d8d0e0825bea72221557 = L.marker(
+                [-7.56912225718998, 110.822598244105],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_7d0a901169f8de9a88b4f925abd87ebf = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background-color: white;\n                    border: 3px solid #3498db;\n                    color: black;\n                    width: 24px; height: 24px;\n                    border-radius: 50%;\n                    text-align: center;\n                    line-height: 20px;\n                    font-weight: bold;\n                    font-size: 10pt;\n                    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n                \"\u003e\n                    8\n                \u003c/div\u003e\n            ",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+            marker_f5ff605aabe9d8d0e0825bea72221557.bindTooltip(
+                `<div>
+                     <b>Stop 8:</b> Pasar Triwindu
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f5ff605aabe9d8d0e0825bea72221557.setIcon(div_icon_7d0a901169f8de9a88b4f925abd87ebf);
+            
+    
+            var marker_662740f41227196d64f2c2bab5b6b07d = L.marker(
+                [-7.56912225718998, 110.822598244105],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_97b3f5def5194f900e77b5523cb127ed = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    font-size: 8pt; font-weight: bold; color: #333; text-align: center;\n                    text-shadow: 1px 1px 0px white; background-color: rgba(255,255,255,0.5);\n                    padding: 0 4px; border-radius: 4px; display: inline-block;\n                \"\u003e\n                    Pasar Triwindu\n                \u003c/div\u003e\n            ",
+  "iconSize": [150, 20],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_662740f41227196d64f2c2bab5b6b07d.setIcon(div_icon_97b3f5def5194f900e77b5523cb127ed);
+            
+    
+            var poly_line_7f40e04115a57da6bb5c33cea26bb04e = L.polyline(
+                [[-7.56933407368537, 110.831616368821], [-7.55469109736842, 110.826784446751]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#e74c3c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            poly_line_7f40e04115a57da6bb5c33cea26bb04e.bindTooltip(
+                `<div>
+                     Ride-Hailing: Pasar Gedhe -> Masjid Raya Sheikh Zayed 
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            poly_line_7f40e04115a57da6bb5c33cea26bb04e.setText(
+                "      \u27a4",
+                {
+  "repeat": true,
+  "center": false,
+  "below": false,
+  "offset": 7,
+  "orientation": 0,
+  "attributes": {
+  "fill": "#e74c3c",
+  "font-weight": "bold",
+  "font-size": "18",
+},
+}
+            );
+        
+    
+            var marker_aabdfb380b5ab9464cff5a8f2e922e64 = L.marker(
+                [-7.56933407368537, 110.831616368821],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_d6ea9e5ef50ed6ed2699a5f73a184091 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background-color: white;\n                    border: 3px solid #e74c3c;\n                    color: black;\n                    width: 24px; height: 24px;\n                    border-radius: 50%;\n                    text-align: center;\n                    line-height: 20px;\n                    font-weight: bold;\n                    font-size: 10pt;\n                    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n                \"\u003e\n                    9\n                \u003c/div\u003e\n            ",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+            marker_aabdfb380b5ab9464cff5a8f2e922e64.bindTooltip(
+                `<div>
+                     <b>Stop 9:</b> Pasar Gedhe
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_aabdfb380b5ab9464cff5a8f2e922e64.setIcon(div_icon_d6ea9e5ef50ed6ed2699a5f73a184091);
+            
+    
+            var marker_69131b424ee3a84ff4046765c7e98c2a = L.marker(
+                [-7.56933407368537, 110.831616368821],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_05e1db4ff047ea5cc7cc832062da50e4 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    font-size: 8pt; font-weight: bold; color: #333; text-align: center;\n                    text-shadow: 1px 1px 0px white; background-color: rgba(255,255,255,0.5);\n                    padding: 0 4px; border-radius: 4px; display: inline-block;\n                \"\u003e\n                    Pasar Gedhe\n                \u003c/div\u003e\n            ",
+  "iconSize": [150, 20],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_69131b424ee3a84ff4046765c7e98c2a.setIcon(div_icon_05e1db4ff047ea5cc7cc832062da50e4);
+            
+    
+            var poly_line_9866b29a9b81f5a19e3e890d1c13255b = L.polyline(
+                [[-7.55469109736842, 110.826784446751], [-7.57163914757402, 110.821528137115]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#e74c3c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            poly_line_9866b29a9b81f5a19e3e890d1c13255b.bindTooltip(
+                `<div>
+                     Ride-Hailing: Masjid Raya Sheikh Zayed  -> Koridor Gatsu
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            poly_line_9866b29a9b81f5a19e3e890d1c13255b.setText(
+                "      \u27a4",
+                {
+  "repeat": true,
+  "center": false,
+  "below": false,
+  "offset": 7,
+  "orientation": 0,
+  "attributes": {
+  "fill": "#e74c3c",
+  "font-weight": "bold",
+  "font-size": "18",
+},
+}
+            );
+        
+    
+            var marker_c069af43367029292c4f5216c5c9486e = L.marker(
+                [-7.55469109736842, 110.826784446751],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_0e739ee1a44f4a7e5941d7f1793ad42a = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background-color: white;\n                    border: 3px solid #e74c3c;\n                    color: black;\n                    width: 24px; height: 24px;\n                    border-radius: 50%;\n                    text-align: center;\n                    line-height: 20px;\n                    font-weight: bold;\n                    font-size: 10pt;\n                    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n                \"\u003e\n                    10\n                \u003c/div\u003e\n            ",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+            marker_c069af43367029292c4f5216c5c9486e.bindTooltip(
+                `<div>
+                     <b>Stop 10:</b> Masjid Raya Sheikh Zayed 
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c069af43367029292c4f5216c5c9486e.setIcon(div_icon_0e739ee1a44f4a7e5941d7f1793ad42a);
+            
+    
+            var marker_d0fec90d104d5c0851fd92c482efd9eb = L.marker(
+                [-7.55469109736842, 110.826784446751],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_b6a02e17f10850466c2a22fabf7057bb = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    font-size: 8pt; font-weight: bold; color: #333; text-align: center;\n                    text-shadow: 1px 1px 0px white; background-color: rgba(255,255,255,0.5);\n                    padding: 0 4px; border-radius: 4px; display: inline-block;\n                \"\u003e\n                    Masjid Raya Sheikh Zayed \n                \u003c/div\u003e\n            ",
+  "iconSize": [150, 20],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_d0fec90d104d5c0851fd92c482efd9eb.setIcon(div_icon_b6a02e17f10850466c2a22fabf7057bb);
+            
+    
+            var poly_line_e521973ee2c4c663a29a64c2c92bc1a4 = L.polyline(
+                [[-7.57163914757402, 110.821528137115], [-7.56938246949621, 110.812505351281]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#e74c3c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            poly_line_e521973ee2c4c663a29a64c2c92bc1a4.bindTooltip(
+                `<div>
+                     Ride-Hailing: Koridor Gatsu -> Wayang Orang Sriwedari
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            poly_line_e521973ee2c4c663a29a64c2c92bc1a4.setText(
+                "      \u27a4",
+                {
+  "repeat": true,
+  "center": false,
+  "below": false,
+  "offset": 7,
+  "orientation": 0,
+  "attributes": {
+  "fill": "#e74c3c",
+  "font-weight": "bold",
+  "font-size": "18",
+},
+}
+            );
+        
+    
+            var marker_df87e8bec0cd803fcd5465e99194e9fe = L.marker(
+                [-7.57163914757402, 110.821528137115],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_2cc01f3cb787bfcf84fba4f94d1e0009 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background-color: white;\n                    border: 3px solid #e74c3c;\n                    color: black;\n                    width: 24px; height: 24px;\n                    border-radius: 50%;\n                    text-align: center;\n                    line-height: 20px;\n                    font-weight: bold;\n                    font-size: 10pt;\n                    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n                \"\u003e\n                    11\n                \u003c/div\u003e\n            ",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+            marker_df87e8bec0cd803fcd5465e99194e9fe.bindTooltip(
+                `<div>
+                     <b>Stop 11:</b> Koridor Gatsu
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_df87e8bec0cd803fcd5465e99194e9fe.setIcon(div_icon_2cc01f3cb787bfcf84fba4f94d1e0009);
+            
+    
+            var marker_c614b0e8fdd4a4010f3d59a7ca11011d = L.marker(
+                [-7.57163914757402, 110.821528137115],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_70b512c1cf0498a713208d56c47c3ab8 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    font-size: 8pt; font-weight: bold; color: #333; text-align: center;\n                    text-shadow: 1px 1px 0px white; background-color: rgba(255,255,255,0.5);\n                    padding: 0 4px; border-radius: 4px; display: inline-block;\n                \"\u003e\n                    Koridor Gatsu\n                \u003c/div\u003e\n            ",
+  "iconSize": [150, 20],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_c614b0e8fdd4a4010f3d59a7ca11011d.setIcon(div_icon_70b512c1cf0498a713208d56c47c3ab8);
+            
+    
+            var poly_line_2ec096ef52c7489467add55b1e02f484 = L.polyline(
+                [[-7.56938246949621, 110.812505351281], [-7.55701440832599, 110.82137900723]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#e74c3c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            poly_line_2ec096ef52c7489467add55b1e02f484.bindTooltip(
+                `<div>
+                     Ride-Hailing: Wayang Orang Sriwedari -> Stasiun Solo Balapan (Return)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            poly_line_2ec096ef52c7489467add55b1e02f484.setText(
+                "      \u27a4",
+                {
+  "repeat": true,
+  "center": false,
+  "below": false,
+  "offset": 7,
+  "orientation": 0,
+  "attributes": {
+  "fill": "#e74c3c",
+  "font-weight": "bold",
+  "font-size": "18",
+},
+}
+            );
+        
+    
+            var marker_ead6e6f1dc2161790b1804e926acb3f2 = L.marker(
+                [-7.56938246949621, 110.812505351281],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_c0b26bec0248f2567c51b83aa5ddb8cc = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background-color: white;\n                    border: 3px solid #e74c3c;\n                    color: black;\n                    width: 24px; height: 24px;\n                    border-radius: 50%;\n                    text-align: center;\n                    line-height: 20px;\n                    font-weight: bold;\n                    font-size: 10pt;\n                    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n                \"\u003e\n                    12\n                \u003c/div\u003e\n            ",
+  "iconSize": [24, 24],
+  "iconAnchor": [12, 12],
+  "className": "empty",
+});
+        
+    
+            marker_ead6e6f1dc2161790b1804e926acb3f2.bindTooltip(
+                `<div>
+                     <b>Stop 12:</b> Wayang Orang Sriwedari
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ead6e6f1dc2161790b1804e926acb3f2.setIcon(div_icon_c0b26bec0248f2567c51b83aa5ddb8cc);
+            
+    
+            var marker_4abec8d1168b2d7f017b31f49e039c59 = L.marker(
+                [-7.56938246949621, 110.812505351281],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var div_icon_0126816e008512bd301f2e38d01c52c8 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    font-size: 8pt; font-weight: bold; color: #333; text-align: center;\n                    text-shadow: 1px 1px 0px white; background-color: rgba(255,255,255,0.5);\n                    padding: 0 4px; border-radius: 4px; display: inline-block;\n                \"\u003e\n                    Wayang Orang Sriwedari\n                \u003c/div\u003e\n            ",
+  "iconSize": [150, 20],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_4abec8d1168b2d7f017b31f49e039c59.setIcon(div_icon_0126816e008512bd301f2e38d01c52c8);
+            
+    
+            var marker_5e45e2812113ad276bf9e99915d68879 = L.marker(
+                [-7.55701440832599, 110.82137900723],
+                {
+}
+            ).addTo(map_3b6dd6f871f4ac1444bc2cf50ceadff4);
+        
+    
+            var icon_c1ae5f043d083650a139c7181530a86f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "flag",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8bce007db40606103ab3587bffc9a0fc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_69e3ebbb0de51fb22e7a7238d4f09c62 = $(`<div id="html_69e3ebbb0de51fb22e7a7238d4f09c62" style="width: 100.0%; height: 100.0%;">FINISH: Stasiun Solo Balapan (Return)</div>`)[0];
+                popup_8bce007db40606103ab3587bffc9a0fc.setContent(html_69e3ebbb0de51fb22e7a7238d4f09c62);
+            
+        
+
+        marker_5e45e2812113ad276bf9e99915d68879.bindPopup(popup_8bce007db40606103ab3587bffc9a0fc)
+        ;
+
+        
+    
+    
+                marker_5e45e2812113ad276bf9e99915d68879.setIcon(icon_c1ae5f043d083650a139c7181530a86f);
+            
+</script>
+</html>
