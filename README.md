@@ -1,7 +1,7 @@
 # 🗺️ Holiday Itinerary Optimization: A Multi-Modal Approach
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
-![Optimization](https://img.shields.io/badge/Optimization-PuLP%20%2F%20CBC-green)
+![Optimization](https://img.shields.io/badge/Optimization-PuLP%20%2F%20HiGHS-green)
 ![Visualization](https://img.shields.io/badge/Visualization-Folium-orange)
 
 ![Hero Map](images/hero_map.png)
