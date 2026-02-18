@@ -38,7 +38,7 @@ The problem is formulated as a variation of the Traveling Salesperson Problem (T
     4.  **Subtour Elimination:** Prevents disconnected loops using MTZ constraints.
 
 ![Network Graph](images/network_graph.png)
-> *Figure 2: The underlying graph network showing potential connections between tourist spots.*
+> *Figure 2: The optimized routing graph visualizing the flow between selected tourist spots.*
 
 ## 🛠️ Tech Stack
 * **Language:** Python 3.10+
