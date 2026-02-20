@@ -4,6 +4,8 @@
 ![Optimization](https://img.shields.io/badge/Optimization-PuLP%20%2F%20HiGHS-green)
 ![Visualization](https://img.shields.io/badge/Visualization-Folium-orange)
 
+> 📖 **Read the full explanation of this project on Medium:** > [Solving the Holiday Itinerary Puzzle: A Multi-Modal Orienteering Problem Approach](https://medium.com/@banusuharyadi07/solving-the-holiday-itinerary-puzzle-a-multi-modal-orienteering-problem-approach-04878b783ed9)
+
 ![Hero Map](images/hero_map.png)
 > *Figure 1: The optimized itinerary map. **Red lines** represent fast ride-hailing trips, while **Blue dashed lines** indicate economical public bus rides. The algorithm automatically selects the best mode for each leg.*
 
